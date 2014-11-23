@@ -182,7 +182,6 @@ def Walk(tree):
         for x in Walk(tree.Content):
             yield x
 
-_test_str = """
 def enliven(w):
     try:
         controls = [ n for n in Walk(w) if isinstance(n, Button) or isinstance(n, TextBox) ]
@@ -253,17 +252,16 @@ class Calculator:
         self.on_Button('+')
     def on_Divide(self, b, e):
         self.on_Button('/')
-"""
-
+        
 class Calc(Object):
     def __init__(self):
         #self.Content = LoadXaml('calc.xaml')
         self.Content = XamlReader.Load(_Calc_xaml_str)
         controls = [ n for n in Walk(self.Content) if isinstance(n, Button) or isinstance(n, TextBox) ]
         for c in controls: c.FontSize *=2
-        import calculator
-        calculator.enliven(self.Content)
-        #enliven(self.Content)
+        #import calculator
+        #calculator.enliven(self.Content)
+        enliven(self.Content)
 
 class Clock(Object):
     def __init__(self):
