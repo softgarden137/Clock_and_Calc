@@ -14,7 +14,6 @@ from System.Windows.Markup import * # for XamlReader
 #from Microsoft.Scripting.Silverlight.DynamicApplication import MakeUri
  
 from datetime import datetime
-import calculator
 
 _Calc_xaml_str = """
 <UserControl
@@ -189,7 +188,8 @@ class Calc(Object):
         self.Content = XamlReader.Load(_Calc_xaml_str)
         controls = [ n for n in Walk(self.Content) if isinstance(n, Button) or isinstance(n, TextBox) ]
         for c in controls: c.FontSize *=2
-        #calculator.enliven(self.Content)
+        import calculator
+        calculator.enliven(self.Content)
 
 class Clock(Object):
     def __init__(self):
