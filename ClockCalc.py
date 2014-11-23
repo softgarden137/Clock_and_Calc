@@ -189,7 +189,7 @@ class Calc(Object):
         self.Content = XamlReader.Load(_Calc_xaml_str)
         controls = [ n for n in Walk(self.Content) if isinstance(n, Button) or isinstance(n, TextBox) ]
         for c in controls: c.FontSize *=2
-        calculator.enliven(self.Content)
+        #calculator.enliven(self.Content)
 
 class Clock(Object):
     def __init__(self):
